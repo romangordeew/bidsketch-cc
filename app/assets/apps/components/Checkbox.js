@@ -1,9 +1,9 @@
 import React from 'react';
 import {Checkbox, OverlayTrigger, Tooltip} from "react-bootstrap";
 import {connect} from "react-redux";
-import {checkboxSwitched} from "../actions/document";
+import {switchCheckbox} from "../actions/document";
 
-const checkboxSwitchedWrapper = (checkboxSwitched, id) => () => checkboxSwitched(id);
+const switchCheckboxWrapper = (switchCheckbox, id) => () => switchCheckbox(id);
 
 const Overlay = (
   <Tooltip id="tooltip">
@@ -11,14 +11,18 @@ const Overlay = (
   </Tooltip>
 );
 
-const MyCheckbox = ({checkboxSwitched, checkboxes, id, ...props}) => (
+const MyCheckbox = ({editingLocked, switchCheckbox, checkboxes, id, ...props}) => (
   <OverlayTrigger placement="top" overlay={Overlay}>
     <Checkbox
+      disabled={editingLocked}
       checked={checkboxes[id].checked}
-      onChange={checkboxSwitchedWrapper(checkboxSwitched, id)}
+      onChange={switchCheckboxWrapper(switchCheckbox, id)}
       {...props}
     />
   </OverlayTrigger>
 );
 
-export default connect(({document: {checkboxes}}) => ({checkboxes}), {checkboxSwitched})(MyCheckbox);
+export default connect(({document: {checkboxes, editingLocked}}) => ({
+  checkboxes,
+  editingLocked
+}), {switchCheckbox})(MyCheckbox);

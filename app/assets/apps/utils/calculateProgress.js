@@ -1,4 +1,6 @@
+import calculateSum from "./calculateSum";
+
 const calculateProgress = (array) =>
-  array.reduce((acc, {checked}) => acc + Number(checked), 0) / 4 * 100;
+  calculateSum(array) / 4 * 100;
 
 export default calculateProgress;

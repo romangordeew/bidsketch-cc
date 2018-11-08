@@ -1,11 +1,22 @@
 import React from 'react';
 import Checkbox from "./Checkbox";
+import {connect} from "react-redux";
 
-const DocumentForm = () => (
-  <div>
-    <Checkbox id={0}/>
-    <Checkbox id={1}/>
-  </div>
+const renderCheckbox = ({id, ...props}) => (
+  <Checkbox
+    key={id}
+    id={id}
+    {...props}
+  />
 );
 
-export default DocumentForm;
+const DocumentForm = ({activePage, checkboxes}) => {
+  const slice = checkboxes.slice(activePage * 2, activePage * 2 + 2);
+  return (
+    <div>
+      {slice.map(renderCheckbox)}
+    </div>
+  );
+};
+
+export default connect(({document: {activePage, checkboxes}}) => ({activePage, checkboxes}))(DocumentForm);

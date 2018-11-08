@@ -1,0 +1,1 @@
+export const NuMBER_OF_PAGES = 2;
