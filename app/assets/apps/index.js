@@ -7,11 +7,11 @@ import {persistStore} from "redux-persist";
 import {PersistGate} from "redux-persist/integration/react";
 import reducer from './reducers';
 import {Provider} from "react-redux";
-import App from "./App";
+import App from "./components/App";
 
 const store = createStore(
   reducer,
-  undefined,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 const persistor = persistStore(store);

@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from "./Header";
 import Thumbnails from "./Thumbnails";
-import Form from "./Form";
+import DocumentForm from "./DocumentForm";
 
 const App = () => (
   <div>
     <Header/>
     <Thumbnails/>
-    <Form/>
+    <DocumentForm/>
   </div>
 );
 
