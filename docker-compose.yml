@@ -1,0 +1,19 @@
+version: '3'
+services:
+  bidsketch-backend:
+    image: bidsketch-backend
+    ports:
+      - 3000:3000
+    command: rails s
+    build: .
+    volumes:
+      - ./app:/app/app
+      - ./config:/app/config
+  database:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=bidsketch_application_development
+    ports:
+      - 5433:5432
