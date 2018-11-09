@@ -11,7 +11,7 @@ const renderPageIcon = (i) => (
 );
 
 const Thumbnails = () => (
-  <div>
+  <div className="thumbnails">
     {times(NuMBER_OF_PAGES).map(renderPageIcon)}
   </div>
 );

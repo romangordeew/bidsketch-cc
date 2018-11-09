@@ -7,13 +7,17 @@ import calculateSum from "../utils/calculateSum";
 import SaveAndFinish from "./SaveAndFinish";
 
 const Header = ({checkboxes, flowStarted, start}) => {
-  const finished = checkboxes.length === calculateSum(checkboxes);
+  const sum = calculateSum(checkboxes);
+  const finished = checkboxes.length === sum;
   return (
-    <div>
-      Review & Complete document
-      {!flowStarted && <button onClick={start}>Click to Start</button>}
+    <div className="header">
+      <div className="headerTop">
+        <p className="headerTop__text">Review & Complete document</p>
+        {!flowStarted && <button className="headerTop__btn headerTop__btn_start" onClick={start}>Click to Start</button>}
+        {finished && <SaveAndFinish/>}
+      </div>
       {flowStarted && <ProgressBar now={calculateProgress(checkboxes)}/>}
-      {finished && <SaveAndFinish/>}
+      <p className="progress-step" style={{left: `${calculateProgress(checkboxes)}%`, transform: `translateX(-${calculateProgress(checkboxes)}%)`}}>{flowStarted && `${sum}/${checkboxes.length}`}</p>
     </div>
   );
 };

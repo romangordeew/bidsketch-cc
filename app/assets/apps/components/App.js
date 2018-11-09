@@ -4,10 +4,12 @@ import Thumbnails from "./Thumbnails";
 import DocumentForm from "./DocumentForm";
 
 const App = () => (
-  <div>
+  <div className="allcontent">
     <Header/>
-    <Thumbnails/>
-    <DocumentForm/>
+    <div className="main">
+      <Thumbnails/>
+      <DocumentForm/>
+    </div>
   </div>
 );
 

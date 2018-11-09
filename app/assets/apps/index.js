@@ -16,11 +16,13 @@ const store = createStore(
 
 const persistor = persistStore(store);
 
-ReactDOM.render(
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <App/>
-    </PersistGate>
-  </Provider>,
-  document.getElementById('root')
-);
+document.addEventListener('DOMContentLoaded', function () {
+  ReactDOM.render(
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <App/>
+      </PersistGate>
+    </Provider>,
+    document.getElementById('root')
+  )
+});

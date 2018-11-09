@@ -11,9 +11,11 @@ const PageIcon = ({activePage, activatePage, checkboxes, i}) => {
   return (
     <div
       onClick={activatePageWrapper(activatePage, i)}
-      className={`${sum === slice.length ? 'tick' : ''} ${activePage === i ? 'active' : ''}`}
+      className={`${activePage === i ? 'active' : ''} page`}
     >
-      {sum} of {slice.length}
+      <div className={`${sum === slice.length ? 'tick ' : 'page__sum'}`}>
+        <p className={`${sum === slice.length ? 'tick__text ' : ''}`}>{sum} of {slice.length}</p>
+      </div>
     </div>
   );
 };
